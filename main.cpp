@@ -29,9 +29,13 @@ void compare(string s1, string s2, int &final){
     final += count;
 }
 
-int main(){
-  string input1 = "AY278488.2.txt";
-  string input2 = "AY274119.txt";
+int main(int argc, char **argv){  
+  if (argc != 3){
+    cout << "Please, enter two existing files";
+    return -1;
+  }
+  string input1 = argv[1];
+  string input2 = argv[2];
   int equal = 0;
   thread first_file {read_file, ref(input1)};
   thread second_file {read_file, ref(input2)};
